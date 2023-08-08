@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeds</title>
+    <link rel="stylesheet" href="post.css">
+    <script src="https://kit.fontawesome.com/46d7328699.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <body>
+
+        <div class="flex-container">
+        <div class="container">
+          <div class="sidenav" id="click">
+            <div onclick="myFun()" class="toggle"><i class="fa-solid fa-xmark"></i></div>
+            <img src="images/CHATTER.png" alt="">
+            <h1>Overview</h1>
+                <span><img src="images/ftxtoken.png" alt=""></span><a href="#">Feed</a>
+                <span><img src="images/material-symbols_bookmarks-outline.png" alt=""></span><a href="#">Bookmarks</a>
+                <span><img src="images/ant-design_team-outlined.png" alt=""></span><a href="#">Team blogs</a>
+                <span><img src="images/material-symbols_drafts-outline.png" alt=""></span><a href="#">Drafts</a>
+                <span><img src="images/ic_outline-analytics.png" alt=""></span><a href="#">Analytics</a>
+            <h2>Trending Tags</h2>
+                <p>Programming</p>
+                <p>Data science</p>
+                <p>Technology</p>
+                <p>Machine learning</p>
+                <p>Politics</p>
+                <p>See all</p>
+            <h2>Personal</h2>
+            <span><img src="images/mdi_account-outline.png" alt=""></span><a href="#">Account</a>
+            <span><img src="images/basil_notification-outline.png" alt=""></span><a href="#">Notifications</a>
+            <p style="color: red;">Log out</p>
+            </div>
+            </div>
+          <div class="flex-container1">
+          <div class="header">
+            <div onclick="myFunction()" class="toggle_btn1"><i class="fa-solid fa-bars"></i></div>
+            <input type="search" name="search" placeholder="Search chatter">
+            <span><img class="img" src="images/basil_notification-outline.png" alt="notify"></span>
+            <span><img class="img1" src="images/Mask group(2).png" alt="user"></span>
+        </div>
+            <div class="feed"> 
+                <div class="feed-details">
+                <h4>FEED</h4> 
+                <input type="text" name="text" placeholder="What is happening?!"><br><br>
+                <button>Post a content</button>
+                </div>
+                <div class="feed-features">
+                    <li>For you</li>
+                    <li>Featured</li>
+                    <li>Recent</li>
+                </div>
+                <div class="feed-content"></div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function myFunction() {
+        var toggleClick = document.getElementById("click");
+
+        if (toggleClick.style.display = "none") {
+        toggleClick.style.display = "block";
+        } else {
+        toggleClick.style.display = "none";
+        }
+    }
+
+    function myFun() {
+        var toggleClick = document.getElementById("click");
+
+        if (toggleClick.style.display = "block") {
+        toggleClick.style.display = "none";
+        } else {
+        toggleClick.style.display = "none";
+        }
+    }
+    </script>
+</body>
+</html>

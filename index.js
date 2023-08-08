@@ -11,6 +11,13 @@ toggleBtn.onclick = function () {
     : 'fa-solid fa-bars'
 
 }
+ 
+
+
+//Go to feed//
+//function myfunction (){
+//    window.location.href= "post.html";
+//}
 
 
 

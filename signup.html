@@ -26,23 +26,21 @@
             <div class="bar"></div>
         <div class="register3">
             <h1>Register as a Writer/Reader</h1>
-        <form>
+        <form id="authForm">
             <label for="firstname">First name</label><br>
-            <input type="text" name="text" placeholder="first name" required><br>
+            <input type="text"  placeholder="first name" required><br>
             <label for="lastname">Last name</label><br>
-            <input type="text" name="text" placeholder="last name" required><br>
+            <input type="text"  placeholder="last name" required><br>
             <label for="join">You are joining as?</label><br>
             <select>
                 <option>Writer</option>
                 <option>Reader</option>
             </select><br>
             <label for="email">Email</label><br>
-            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="email" placeholder="Email" id="userEmail" required><br>
             <label for="password">Password</label><br>
-            <input type="password" name="psw" placeholder="Enter password" required><br>
-            <label for="password">Confirm Password</label><br>
-            <input type="password" name="psw-repeat" placeholder="Confirm password" required><br>
-            <button type="submit" class="registerbtn">Create account</button>
+            <input type="password"  placeholder="Enter password" id="userPassword" required><br>
+            <button  id="signUpButton">Create account</button>
         </form>
         </div>
 
@@ -53,7 +51,91 @@
         </div>
         
     </div>
-    
-    <script src="app.js"></script>
+    </div>
+</div>
+
+    <footer>
+        <div class="container6">
+        <div class="cont6">
+        <div class="social">
+            <img src="images/CHATTER.png" alt="">
+            <div class="explore">
+                <h6>Explore</h6>
+                <p>community</p>
+                <p>Trending blogs</p>
+                <p>Chatter for teams</p>
+            </div>
+            <div class="support">
+                <h6>Support</h6>
+                <p>Support docs</p>
+                <p>Join slack</p>
+                <p>Contact</p>
+            </div>
+            <div class="O-blog">
+                <h6>Official blog</h6>
+                <p>Official blog</p>
+                <p>Engineering blog</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        import{
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCWbC48loknjOMn9-Pf5_tbq8H9dLf3efM",
+          authDomain: "blogauth-5e625.firebaseapp.com",
+          projectId: "blogauth-5e625",
+          storageBucket: "blogauth-5e625.appspot.com",
+          messagingSenderId: "760452238673",
+          appId: "1:760452238673:web:5d8aa77490e465624b5770"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+
+        const userEmail = document.querySelector("#userEmail");
+        const userPassword = document.querySelector("#userPassword");
+        const authForm = document.querySelector("#authForm");
+        const signUpButton = document.querySelector("#signUpButton");
+        const signInButton = document.querySelector("#signInButton");
+        const signOutButton = document.querySelector("#signOutButton");
+
+
+        const userSignUp = async() => {
+        const signUpEmail = userEmail.value;
+        const signUpPassword = userPassword.value;
+        createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+            alert("Your account has been created!");
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode + errorMessage);
+        })
+    }
+
+    signUpButton.addEventListener("click", userSignUp);
+      </script>
+
 </body>
 </html>
