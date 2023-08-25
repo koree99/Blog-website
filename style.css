@@ -56,7 +56,7 @@ header {
     color: black;
     font-size: 16px;
     font-weight: 700;
-    border: 1px solid #543EE0;  ;
+    border: 1px solid #543EE0;  
     outline: none;
     border-radius: 8px;
     padding: 13px;
@@ -65,8 +65,8 @@ header {
     cursor: pointer;
 }
 .action_btn:hover {
-    border: 1px solid #5738f3;
-    background-color: #f6f5fb;
+    border: 1px solid #baaef8;
+    color: #543EE0;
 }
 .action_btn1 {
     background-color: #543EE0; ;
@@ -357,10 +357,12 @@ h5 {
     border: none;
     border-radius: 8px;
     background-color:  #543EE0; 
-    color: white;
     padding: 13px;
     margin-top: 4%;
     cursor: pointer;
+}
+.team-info button a {
+    color: white;
 }
 .team-info button:hover {
     opacity: 0.9;

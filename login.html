@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <div class="container">
@@ -18,7 +18,7 @@
             </div>
 
             
-            <div  class="container3" id="linklogin">
+            <div  class="container2">
                 <div class="register2 " >
                     <span><a href="signup.html">REGISTER</a></span>
                     <span>LOG IN</span>
@@ -27,17 +27,20 @@
                     <div class="bar1"></div>
                 <div class="register3">
                     <h2>Welcome back</h2>
-                <form class="login">
+                <form id="authForm1">
                     <label for="email">Email</label><br>
-                    <input type="email"  placeholder="Email"  id="userEmail"  required><br>
+                    <input type="email" name="email" placeholder="Email" id="email"  required><br>
                     <label for="password">Password</label><br>
-                    <input type="password"  placeholder="Enter password" id="userPassword" required><br>
+                    <input type="password" name="password" placeholder="Enter password" id="password"  required><br>
                     <button  id="signInButton">Log in</button>
                 </form>
                 </div>
             </div>
             </div>
             </div>
+        </div>
+
+
 
             <footer>
                 <div class="container6">
@@ -66,16 +69,11 @@
             </div>
             </footer>
 
+
             <script type="module">
                 // Import the functions you need from the SDKs you need
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-                import{
-                    getAuth,
-                    createUserWithEmailAndPassword,
-                    signInWithEmailAndPassword,
-                    onAuthStateChanged,
-                    signOut
-                } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+                import{getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
                 // TODO: Add SDKs for Firebase products that you want to use
                 // https://firebase.google.com/docs/web/setup#available-libraries
               
@@ -83,6 +81,7 @@
                 const firebaseConfig = {
                   apiKey: "AIzaSyCWbC48loknjOMn9-Pf5_tbq8H9dLf3efM",
                   authDomain: "blogauth-5e625.firebaseapp.com",
+                  databaseURL: "https://blogauth-5e625-default-rtdb.firebaseio.com",
                   projectId: "blogauth-5e625",
                   storageBucket: "blogauth-5e625.appspot.com",
                   messagingSenderId: "760452238673",
@@ -93,44 +92,35 @@
                 const app = initializeApp(firebaseConfig);
                 const auth = getAuth(app);
         
-        
-                const userEmail = document.querySelector("#userEmail");
-                const userPassword = document.querySelector("#userPassword");
-                const authForm = document.querySelector("#authForm");
-                const signUpButton = document.querySelector("#signUpButton");
+                const authForm = document.querySelector("#authForm1");
                 const signInButton = document.querySelector("#signInButton");
-                const signOutButton = document.querySelector("#signOutButton");
-
-            const userSignIn = async() => {
-            const signInEmail = userEmail.value;
-            const signInPassword = userPassword.value;
-            signInWithEmailAndPassword(auth, signInEmail, signInPassword)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                alert("You have signed in successfully!");
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode + errorMessage);
-            })
-        }
-
-
-       //   const checkAuthState = async() => {
-           // onAuthStateChanged(auth, user => {
-           //     if(user) {
-              //  window.location.href= "post.html";
-            //    }
-           //     else{
-                //    window.location.href= "login.html";
-           //     }
-           // })
-       // }
-            
-       // checkAuthState();
-
-        signInButton.addEventListener("click", userSignIn);
-   </script>
+        
+        
+                signInButton.addEventListener('click', (e) => {
+                    e.preventDefault()
+        
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                signInWithEmailAndPassword(auth, email, password)
+                    .then(async (userCredential) => {
+                // signin user //
+                    const user = userCredential.user;
+                    })
+                    .then(() => {
+                    alert('User Signed In'); // avoid alert, it blocks user input!
+                                            // update a div with an information message instead
+                    
+                    location.href = "post.html";
+                    })
+                    .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+        
+                    alert(errorMessage);   // avoid alert, it blocks user input!
+                                            // update a div with an error message instead
+                    });
+                });
+             </script>
 </body>
 </html>

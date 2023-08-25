@@ -12,8 +12,8 @@
 
         <div class="flex-container">
         <div class="container">
-          <div class="sidenav" id="click">
-            <div onclick="myFun()" class="toggle"><i class="fa-solid fa-xmark"></i></div>
+          <div class="sidenav">
+            <div class="toggle"><i class="fa-solid fa-xmark"></i></div>
             <img src="images/CHATTER.png" alt="">
             <h1>Overview</h1>
                 <span><img src="images/ftxtoken.png" alt=""></span><a href="#">Feed</a>
@@ -31,12 +31,14 @@
             <h2>Personal</h2>
             <span><img src="images/mdi_account-outline.png" alt=""></span><a href="#">Account</a>
             <span><img src="images/basil_notification-outline.png" alt=""></span><a href="#">Notifications</a>
-            <p style="color: red;">Log out</p>
+            <form id="authForm">
+            <button id="signOutButton" style="color: red;">Log out</button>
+            </form>
             </div>
             </div>
           <div class="flex-container1">
           <div class="header">
-            <div onclick="myFunction()" class="toggle_btn1"><i class="fa-solid fa-bars"></i></div>
+            <div  class="toggle_btn1"><i class="fa-solid fa-bars"></i></div>
             <input type="search" name="search" placeholder="Search chatter">
             <span><img class="img" src="images/basil_notification-outline.png" alt="notify"></span>
             <span><img class="img1" src="images/Mask group(2).png" alt="user"></span>
@@ -57,26 +59,70 @@
     </div>
     </div>
 
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        import{getAuth, signOut} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCWbC48loknjOMn9-Pf5_tbq8H9dLf3efM",
+          authDomain: "blogauth-5e625.firebaseapp.com",
+          databaseURL: "https://blogauth-5e625-default-rtdb.firebaseio.com",
+          projectId: "blogauth-5e625",
+          storageBucket: "blogauth-5e625.appspot.com",
+          messagingSenderId: "760452238673",
+          appId: "1:760452238673:web:5d8aa77490e465624b5770"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+       const authForm = document.querySelector("#authForm");
+       const signOutButton = document.querySelector("#signOutButton");
+
+    //    signout to landing page //
+        signOutButton.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            const auth = getAuth();
+            signOut(auth)
+            .then(() => {
+            
+
+                location.href = 'index.html';
+            })
+            .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            alert(errorMessage);
+        
+        });
+    });
+        
+    </script>
+
+
+
     <script>
-        function myFunction() {
-        var toggleClick = document.getElementById("click");
+    const toggle = document.querySelector('.toggle');
+    const toggleMark = document.querySelector('.toggle_btn1');
+    const toggleBtnIcon = document.querySelector('.toggle_btn1 i');
+    const sideNav = document.querySelector('.sidenav');
 
-        if (toggleClick.style.display = "none") {
-        toggleClick.style.display = "block";
-        } else {
-        toggleClick.style.display = "none";
-        }
+    toggleMark.onclick = function () {
+    sideNav.classList.toggle('open')
+    const isOpen = sideNav.classList.contains('open')
+
+    toggle.onclick = function () {
+        sideNav.classList.toggle('close')
     }
-
-    function myFun() {
-        var toggleClick = document.getElementById("click");
-
-        if (toggleClick.style.display = "block") {
-        toggleClick.style.display = "none";
-        } else {
-        toggleClick.style.display = "none";
-        }
     }
+    
     </script>
 </body>
 </html>

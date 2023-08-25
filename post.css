@@ -40,6 +40,9 @@
     margin-top: 10%;
     margin-bottom: -7.5%;
 }
+.sidenav.open {
+    height: 100vh;
+}
 h1,h2 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 600;
@@ -56,6 +59,23 @@ p {
     font-size: 15px;
     color: black;
     display: block;
+}
+input[type="search"]::placeholder {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+}
+#authForm {
+    padding: 0px 0px 0px 70px;
+    margin-top: 5%;
+}
+#signOutButton {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 .flex-container1 {
     width: 100%;
@@ -171,6 +191,26 @@ li {
 .sidenav {
     display: none;
     background-color: white;
+}
+.sidenav.open {
+    display: block;
+}
+.sidenav.close {
+    display: none;
+}
+.sidenav a {
+    font-size: 15px;
+    margin-top: -6%;
+}
+.sidenav span img {
+    margin-top: -40px;
+    margin-bottom: -1.5%;
+}
+.sidenav img {
+    padding: 0 0 0 60px;
+}
+#signOutButton {
+    padding: 0px 0px 0px 18px;
 }
 .header {
     width: 100%;
